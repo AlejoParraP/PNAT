@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.api.pnat.model.Inmersion;
 
-public interface IInmersion  extends CrudRepository<Inmersion, Long>{
+public interface IInmersion  extends CrudRepository<Inmersion, Integer>{
 
 }

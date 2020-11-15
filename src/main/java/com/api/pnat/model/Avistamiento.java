@@ -21,7 +21,7 @@ public class Avistamiento implements Serializable {
     @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private long id;
+    private Integer id;
 
     @Getter
     @Setter
@@ -91,7 +91,7 @@ public class Avistamiento implements Serializable {
     private Integer puntos;
 
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
