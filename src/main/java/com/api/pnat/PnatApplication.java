@@ -9,5 +9,4 @@ public class PnatApplication {
     public static void main(String[] args) {
         SpringApplication.run(PnatApplication.class, args);
     }
-
 }
