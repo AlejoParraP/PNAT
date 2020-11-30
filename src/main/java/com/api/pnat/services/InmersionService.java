@@ -3,7 +3,6 @@ package com.api.pnat.services;
 import com.api.pnat.interfaces.IInmersion;
 import com.api.pnat.model.Inmersion;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,25 +15,18 @@ public class InmersionService{
     }
 
    
-    public void save(Inmersion o) {
-    	Inmersion inmersion = new Inmersion();
-    	inmersion = (Inmersion) o;
-    	iInmersion.save(inmersion);
-    	
+    public Inmersion save(Inmersion o) {
+    	return iInmersion.save(o);
     }
 
     
-    public Object findById(Integer id) {
-        Inmersion inmersion = new Inmersion();
-        inmersion = iInmersion.findById(id).orElse(null);
-        return inmersion;
+    public Inmersion findById(Integer id) {
+        return iInmersion.findById(id).orElse(null);
     }
 
     public void delete(Integer id) {
         if (id > 0) {
-            Inmersion inmersion = new Inmersion();
-            inmersion = (Inmersion) findById(id);
-            //Metodo Get Requerido del modelo
+            Inmersion inmersion = (Inmersion) findById(id);
             if (inmersion.getId() > 0) {
                 iInmersion.delete(inmersion);
             }

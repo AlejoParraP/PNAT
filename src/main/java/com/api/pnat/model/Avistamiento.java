@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "avistamiento")
@@ -15,13 +17,12 @@ public class Avistamiento implements Serializable {
     public Avistamiento() {
     }
 
-
     @Id
     @Getter
     @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @Column(name = "id_avistamiento", nullable = false)
+    private Integer id_avistamiento;
 
     @Getter
     @Setter
@@ -87,13 +88,17 @@ public class Avistamiento implements Serializable {
     @Setter
     @Size(min = 3, max = 50)
     @NotNull
-    @Column(name = "puntos")
-    private Integer puntos;
+    @Column(name = "puntuacion")
+    private Integer puntuacion;
 
+    @Getter
+    @Setter
+    @OneToMany(targetEntity =AvistaPorInmersion.class)
+    private List<AvistaPorInmersion> avistamientosPorInmersion = new ArrayList<AvistaPorInmersion>();
 
-	public Integer getId() {
-		return id;
-	}
+    @ManyToOne
+    @JoinColumn(name = "id_especie", referencedColumnName = "id_especie")
+    private Especies especies;
 
     //    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "idEmpresa")
 //    private List<RutaEmpresa> rutaEmpresaList;

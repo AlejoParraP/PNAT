@@ -17,24 +17,18 @@ public class LugaresService{
         return (List<Lugares>) iLugares.findAll();
     }
 
-    public void save(Lugares o) {
-    	Lugares lugares = new Lugares();
-        lugares = (Lugares) o;
-        iLugares.save(lugares);
+    public Lugares save(Lugares o) {
+        return iLugares.save(o);
     }
 
-    public Object findById(Long id) {
-    	Lugares lugares = new Lugares();
-        lugares = iLugares.findById(id).orElse(null);
-        return lugares;
+    public Lugares findById(Integer id) {
+        return iLugares.findById(id).orElse(null);
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         if (id > 0) {
-        	Lugares lugares = new Lugares();
-            lugares = (Lugares) findById(id);
-            //Metodo Get Requerido del modelo
-            if (lugares.getId() > 0) {
+            Lugares lugares = (Lugares) findById(id);
+            if (lugares.getId_lugar() > 0) {
                 iLugares.delete(lugares);
             }
         }

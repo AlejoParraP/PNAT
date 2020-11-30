@@ -3,6 +3,7 @@ package com.api.pnat.model;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -22,19 +23,19 @@ public class Inmersion implements Serializable{
     @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_inmersion", nullable = false)
-	private Integer Id_Inmersion;
+	private Integer id_inmersion;
 
 	@Getter
     @Setter
     @NotNull
-    @Column(name = "Inicio")
-	private Date Inicio;
+    @Column(name = "inicio")
+	private Date inicio;
 	
 	@Getter
     @Setter
     @NotNull
-    @Column(name = "Fin")
-	private Date Fin;       
+    @Column(name = "fin")
+	private Date fin;
 	
 	@Getter
     @Setter
@@ -93,20 +94,30 @@ public class Inmersion implements Serializable{
 	@Getter
     @Setter
     @NotNull
-    @Column(name = "Id_lugar")
-	private Integer Id_lugar;
+    @Column(name = "id_lugar")
+	private Integer id_lugar;
 	
 	@Getter
     @Setter
     @NotNull
-    @Column(name = "Numero_Avistamiento")
-	private Integer Numero_Avistamiento;
+    @Column(name = "numero_avistamiento")
+	private Integer numero_avistamiento;
 
 	public Integer getId() {
-		return Id_Inmersion;
+		return id_inmersion;
 	}
 
-	
-	
-	
+    @Getter
+    @Setter
+    @OneToMany(targetEntity =AvistaPorInmersion.class)
+    private List<AvistaPorInmersion> avistamientosPorInmersion = new ArrayList<AvistaPorInmersion>();
+
+    @ManyToOne
+    @JoinColumn(name = "id_lugar", referencedColumnName = "id_lugar")
+    private Lugares lugares;
+
+    @Getter
+    @Setter
+    @OneToMany(targetEntity =UsuarioPorInmersion.class)
+    private List<UsuarioPorInmersion> usuarioPorInmersion = new ArrayList<UsuarioPorInmersion>();
 }

@@ -1,11 +1,6 @@
 package com.api.pnat.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import java.io.Serializable;
@@ -41,10 +36,21 @@ public class UsuarioPorInmersion implements Serializable{
 	@Getter
     @Setter
     @NotNull
-    @Column(name = "num_inmersiones")
-	private Integer num_inmersiones;
+    @Column(name = "numero_avistamiento")
+	private Integer numero_avistamiento;
 
 	public Integer getId() {
 		return id_usuarioPorInmersion;
 	}
+
+    @ManyToOne
+    @JoinColumns({
+            @JoinColumn(name = "id_inmersion", referencedColumnName = "id_inmersion"),
+            @JoinColumn(name = "numero_avistamiento", referencedColumnName = "numero_avistamiento"),
+    })
+    private Inmersion inmersion;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    private Usuario usuario;
 }

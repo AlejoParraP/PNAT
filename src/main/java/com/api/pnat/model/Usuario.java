@@ -65,5 +65,7 @@ public class Usuario implements Serializable{
 	public Integer getId() {
 		return id_usuario;
 	}
+
+
 	
 }

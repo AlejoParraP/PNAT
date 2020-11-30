@@ -35,7 +35,7 @@ public class EspeciesController {
     }
 
     @PostMapping
-    public ResponseEntity<Especies> createLugar(@RequestBody Especies especie) {
+    public ResponseEntity<Especies> createEspecie(@RequestBody Especies especie) {
         return ResponseEntity.status(HttpStatus.OK).body(especiesService.save(especie));
     }
 

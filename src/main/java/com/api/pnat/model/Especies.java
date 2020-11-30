@@ -4,6 +4,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Especies")
@@ -11,6 +13,11 @@ public class Especies implements Serializable {
 
     public Especies() {
     }
+
+    @Getter
+    @Setter
+    @OneToMany(targetEntity =Avistamiento.class)
+    private List<Avistamiento> avistamientos = new ArrayList<Avistamiento>();
 
     @Id
     @Getter
@@ -22,24 +29,31 @@ public class Especies implements Serializable {
     @Getter
     @Setter
     @NotNull
-    @Column(name = "nombre_especie")
-    private String nombre_especie;
+    @Column(name = "grupo")
+    private String grupo;
 
     @Getter
     @Setter
     @NotNull
-    @Column(name = "descripcion")
-    private String descripcion;
+    @Column(name = "orden")
+    private String orden;
 
     @Getter
     @Setter
     @NotNull
-    @Column(name = "tamanio_maximo")
-    private String tamanio_maximo;
+    @Column(name = "familia")
+    private String familia;
 
     @Getter
     @Setter
     @NotNull
-    @Column(name = "tamanio_minimo")
-    private String tamanio_minimo;
+    @Column(name = "nombre_cientifico")
+    private String nombre_cientifico;
+
+    @Getter
+    @Setter
+    @NotNull
+    @Column(name = "zona")
+    private String zona;
+
 }
