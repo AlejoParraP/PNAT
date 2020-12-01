@@ -14,10 +14,7 @@ public class Especies implements Serializable {
     public Especies() {
     }
 
-    @Getter
-    @Setter
-    @OneToMany(targetEntity =Avistamiento.class)
-    private List<Avistamiento> avistamientos = new ArrayList<Avistamiento>();
+
 
     @Id
     @Getter
@@ -56,4 +53,11 @@ public class Especies implements Serializable {
     @Column(name = "zona")
     private String zona;
 
+    @Getter
+    @Setter
+    @OneToMany(mappedBy = "especies")
+    private List<Avistamiento> avistamientos = new ArrayList<Avistamiento>();
+
+//    @ManyToOne
+//    private Avistamiento avistamiento;
 }

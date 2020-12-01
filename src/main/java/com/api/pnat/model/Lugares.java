@@ -54,6 +54,6 @@ public class Lugares implements Serializable{
 
     @Getter
     @Setter
-    @OneToMany(targetEntity =Inmersion.class)
+    @OneToMany(mappedBy = "lugares")
     private List<Inmersion> inmersion = new ArrayList<Inmersion>();
 }

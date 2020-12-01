@@ -94,12 +94,6 @@ public class Inmersion implements Serializable{
 	@Getter
     @Setter
     @NotNull
-    @Column(name = "id_lugar")
-	private Integer id_lugar;
-	
-	@Getter
-    @Setter
-    @NotNull
     @Column(name = "numero_avistamiento")
 	private Integer numero_avistamiento;
 
@@ -109,7 +103,7 @@ public class Inmersion implements Serializable{
 
     @Getter
     @Setter
-    @OneToMany(targetEntity =AvistaPorInmersion.class)
+    @OneToMany(mappedBy = "inmersion")
     private List<AvistaPorInmersion> avistamientosPorInmersion = new ArrayList<AvistaPorInmersion>();
 
     @ManyToOne
@@ -118,6 +112,6 @@ public class Inmersion implements Serializable{
 
     @Getter
     @Setter
-    @OneToMany(targetEntity =UsuarioPorInmersion.class)
+    @OneToMany(mappedBy = "inmersion")
     private List<UsuarioPorInmersion> usuarioPorInmersion = new ArrayList<UsuarioPorInmersion>();
 }

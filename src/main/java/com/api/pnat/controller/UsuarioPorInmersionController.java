@@ -51,7 +51,7 @@ public class UsuarioPorInmersionController {
     public ResponseEntity<String> deleteUporI(@PathVariable Integer id) {
         UsuarioPorInmersion usuarioPorInmersion = usuarioPorInmersionService.findById(id);
         if (usuarioPorInmersion != null) {
-            if (usuarioPorInmersion.getId() > 0) {
+            if (usuarioPorInmersion.getId_usuarioPorInmersion() > 0) {
                 usuarioPorInmersionService.delete(usuarioPorInmersion.getId_usuarioPorInmersion());
                 return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
             }

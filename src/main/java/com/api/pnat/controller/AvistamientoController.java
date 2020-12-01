@@ -44,7 +44,7 @@ public class AvistamientoController {
 
     @PatchMapping("{id}")
     public ResponseEntity<Avistamiento> updateAvistamiento(@RequestBody Avistamiento avistamiento, @PathVariable Integer id) {
-        avistamiento.setId_especie(id);
+        avistamiento.setId_avistamiento(id);
         return ResponseEntity.status(HttpStatus.OK).body(avistamientoService.save(avistamiento));
     }
 
@@ -53,7 +53,7 @@ public class AvistamientoController {
         Avistamiento avistamiento = avistamientoService.findById(id);
         if (avistamiento != null) {
             if (avistamiento.getId_avistamiento() > 0) {
-                avistamientoService.delete(avistamiento.getId_especie());
+                avistamientoService.delete(avistamiento.getId_avistamiento());
                 return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
             }
         }

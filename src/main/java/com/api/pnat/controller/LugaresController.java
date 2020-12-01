@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/lugares")
-@SessionAttributes("lugares"))
+@SessionAttributes("lugares")
 public class LugaresController {
 
     private static final Gson gson = new Gson();

@@ -40,13 +40,6 @@ public class Avistamiento implements Serializable {
 
     @Getter
     @Setter
-    @NotNull
-    @Column(name = "id_especie")
-    private int id_especie;
-
-
-    @Getter
-    @Setter
     @Size(min = 3, max = 50)
     @NotNull
     @Column(name = "visibilidad")
@@ -93,12 +86,15 @@ public class Avistamiento implements Serializable {
 
     @Getter
     @Setter
-    @OneToMany(targetEntity =AvistaPorInmersion.class)
+    @OneToMany(mappedBy = "avistamiento")
     private List<AvistaPorInmersion> avistamientosPorInmersion = new ArrayList<AvistaPorInmersion>();
 
     @ManyToOne
-    @JoinColumn(name = "id_especie", referencedColumnName = "id_especie")
+    @JoinColumn(name = "id_especie")
     private Especies especies;
+//
+//    @OneToMany(mappedBy = "avistamiento")
+//    private List<Especies> especies = new ArrayList<Especies>();
 
     //    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "idEmpresa")
 //    private List<RutaEmpresa> rutaEmpresaList;
